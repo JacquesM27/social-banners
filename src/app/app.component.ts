@@ -44,6 +44,7 @@ export class AppComponent {
   }
 
   setLayout(selectedLayout: string) {
+    console.log(selectedLayout);
     Object.keys(this.layout).forEach(key => (this.layout[key] = false));
     this.layout[selectedLayout] = true;
   }

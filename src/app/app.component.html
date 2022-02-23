@@ -2,48 +2,48 @@
 <nav>
   <div class="nav-wrapper black">
     <a class="brand-logo">Social banners</a>
-    <a href="#" class="brand-logo center"> Pobierz </a>
+    <a href="#" class="brand-logo center" (click)="saveImage(banner)"> Pobierz </a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a>Horizontal</a></li>
-      <li><a>Horizontal reverse</a></li>
-      <li><a>Vertical</a></li>
-      <li><a>Vertival reverse</a></li>
+      <li><a (click)="setLayout('horizontal')">Horizontal</a></li>
+      <li><a (click)="setLayout('horizontalRev')" >Horizontal reverse</a></li>
+      <li><a (click)="setLayout('vertical')" >Vertical</a></li>
+      <li><a (click)="setLayout('verticalRev')">Vertival reverse</a></li>
     </ul>
   </div>
 </nav>
 <!-- component navbar end -->
 
-<div>
+<div [ngClass]="layout">
   <!-- component banner -->
   <div class="banner">
-    <div class="banner-text">
-      <span contenteditable="true">cały czas uczę się Angulara</span>
+    <div #banner class="banner-text" [ngStyle]="getBannerStyles()">
+      <span contenteditable="true" [style.fontSize.px]="fontSize" >cały czas uczę się Angulara</span>
     </div>
   </div>
   <!-- component banner end -->
 
   <!-- component banner settings -->
   <div class="settings">
-    <label>Colour 1</label>
+    <label>Color 1</label>
     <div class="colors">
-      <span class="badge"></span>
+      <span class="badge" *ngFor="let color of colors" [ngClass]="color" (click)="color1 = color"></span>
     </div>
-    <input type="range" min="0" max="100" />
+    <input type="range" min="0" max="100" [(ngModel)]="percentColor1"/>
 
-    <label>Colour 2</label>
+    <label>Color 2</label>
     <div class="colors">
-      <span class="badge"></span>
+      <span class="badge" *ngFor="let color of colors.reverse()" [ngClass]="color" (click)="color2 = color" ></span>
     </div>
-    <input type="range" min="0" max="100" />
+    <input type="range" min="0" max="100" [(ngModel)]="percentColor2"/>
 
     <label>Width</label>
-    <input type="range" min="0" max="1000" step="50" />
+    <input type="range" min="0" max="1000" step="1" [(ngModel)]="width" />
 
     <label>Height</label>
-    <input type="range" min="0" max="1000" step="50" />
+    <input type="range" min="0" max="1000" step="1" [(ngModel)]="height" />
 
     <label>Font size</label>
-    <input type="range" min="12" max="72" />
+    <input type="range" min="12" max="72" [(ngModel)]="fontSize" />
   </div>
   <!-- component settings end -->
 </div>

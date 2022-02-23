@@ -4,6 +4,7 @@
     padding: 10px;
 }
 
+
 .badge {
     cursor: pointer;
     display: inline-block;
@@ -50,4 +51,4 @@
 .verticalRev {
     display: flex;
     flex-direction: column-reverse;
-}
+} 
